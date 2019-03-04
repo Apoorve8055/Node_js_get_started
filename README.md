@@ -1,6 +1,7 @@
 # Node_js_get_started
 My Node js All Codes Description
 =========================================================================================================================================
+
                                                          => [1] hellow world <=
 
 Include Modules :
@@ -25,11 +26,14 @@ res.write() :
   not include a message body.
   
 ================================================================================
+
                                            => [2] Create Modules <=
+
 module.exports or exports :
 =>The module.exports or exports is a special object which is included in every JS file in the Node.js application by default. module is a 
   variable that represents current module and exports is an object that will be exposed as a module. So, whatever you assign to module.exports 
   or exports, will be exposed as a module.
+
 ================================================================================
                                              => [2] Core Modules <=
  
@@ -47,5 +51,18 @@ fs :
 => fs module includes classes, methods, and events to work with file I/O.
 util :	
 => util module includes utility functions useful for programmers. 
+----------------------------------------------------------------------------
+                                HTTP Properties and Methods:
+Method	Description:
+createClient() :
+=> Deprecated. Creates a HTTP client
+createServer():	
+=> Creates an HTTP server
+get():	
+=> Sets the method to GET, and returns an object containing the user's request
+globalAgent :	
+=> Returns the HTTP Agent
+request():	
+=> Returns an object containing the user's request
 
 ================================================================================
