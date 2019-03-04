@@ -14,6 +14,7 @@ http.createServer(
 </body>
 </html>`;
        res.write(data);
+       res.write("test String");
         res.end("('+')");
     }
 ).listen(8080);
