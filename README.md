@@ -15,7 +15,7 @@ res.send() :
    set it to be something else.
 
 res.end() :
-=> This method kind of makes sense, right? There's a response and once we have collected the data or did something else 
+=> There's a response and once we have collected the data or did something else 
    we want to present that to the caller and as a last step we should end the session - this could be achieved by calling res.end().
    
 =========================================================================================================================================
