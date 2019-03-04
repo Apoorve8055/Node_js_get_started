@@ -3,8 +3,20 @@ var http = require('http');
 
 http.createServer(
     function (req,res) {
-        res.write(" Hellow Apoorve ");
+        var data  = `<!DOCTYPE html>
+<html>
+<head>
+    <title>Apoorve</title>
+</head>
+<body>
+<h1>Apoorve</h1>
+<p>my name is Apoorve kumar Verma</p>
+</body>
+</html>`;
+       res.write(data);
         res.end("('+')");
     }
 ).listen(8080);
+
+
 
