@@ -35,7 +35,8 @@ module.exports or exports :
   or exports, will be exposed as a module.
 
 ================================================================================
-                                             => [2] Core Modules <=
+
+                                             => [3] Core Modules <=
  
 Core Module	Description :
 
