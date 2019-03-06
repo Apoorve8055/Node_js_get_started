@@ -106,5 +106,25 @@ URL Module :
 => The URL module splits up a web address into readable parts. like , host , pathname , search ,parameters
 url.parse():
 => method, and it will return a URL object with each part of the address as properties
-     
+
+================================================================================
+                                             => [5] NPM <=
+
+NPM :
+=> NPM is a package manager for Node.js packages, or modules     
+
+Package :
+=> A package in Node.js contains all the files you need for a module.
+   Modules are JavaScript libraries you can include in your project.
+
+================================================================================
+                                             => [6] UPlOAD FILES <=
+ Formidable Module :
+=>  There is a very good module for working with file uploads, called "Formidable".                                            
+
+================================================================================
+                                             => [7] Send an Email <=
+Nodemailer Module:
+=> The Nodemailer module makes it easy to send emails from your computer.
+
 ================================================================================
