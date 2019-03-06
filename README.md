@@ -88,5 +88,23 @@ globalAgent :
 request():	
 
 => Returns an object containing the user's request
+-----------------------------------------------------------------------------
+Util Module :
+=> The Util module provides access to some utility functions.   
+Method  &   Description:
 
+debuglog()	Writes debug messages to the error object
+deprecate()	Marks the specified function as deprecated
+format()	Formats the specified string, using the specified arguments
+inherits()	Inherits methods from one function into another
+inspect()	Inspects the specified object and returns the object as a string
+
+================================================================================
+                                             => [4] Url Modules <=
+                                             
+URL Module :
+=> The URL module splits up a web address into readable parts. like , host , pathname , search ,parameters
+url.parse():
+=> method, and it will return a URL object with each part of the address as properties
+     
 ================================================================================
