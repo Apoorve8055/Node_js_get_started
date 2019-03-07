@@ -128,3 +128,42 @@ Nodemailer Module:
 => The Nodemailer module makes it easy to send emails from your computer.
 
 ================================================================================
+                                             => [8] Express Framework <=
+Express :
+=> Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node based Web applications. Following are some of the core features of Express framework −
+   => Allows to set up middlewares to respond to HTTP Requests.
+   => Defines a routing table which is used to perform different actions based on HTTP Method and URL.
+   => Allows to dynamically render HTML Pages based on passing arguments to templates.
+
+Request & Response :
+
+Express application uses a callback function whose parameters are request and response objects.
+
+app.get('/', function (req, res) {
+   // --
+})
+
+Request Object : 
+=> The request object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
+Response Object :
+=> The response object represents the HTTP response that an Express app sends when it gets an HTTP request.
+
+================================================================================
+                                             => [9] Routing <=
+We have seen a basic application which serves HTTP request for the homepage. 
+Routing refers to determining how an application responds to a client request to a particular endpoint,
+which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
+
+ex:
+=> app.Method(path,Handler)
+
+app.get('/', function (req, res) {
+   // --
+})
+
+app.post('/', function (req, res) {
+   // --
+})
+
+================================================================================
+                                             => [10]Path Module <=
