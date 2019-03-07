@@ -14,6 +14,4 @@ console.log(path.delimiter);
 var x = path.join('Users', 'Refsnes', 'demo_path.js');
 console.log(x);
 
-app.listen(8080,function(){
-
-})
+app.listen(8080,function(){})
