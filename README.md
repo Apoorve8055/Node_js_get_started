@@ -100,6 +100,7 @@ inherits()	Inherits methods from one function into another
 inspect()	Inspects the specified object and returns the object as a string
 
 ================================================================================
+
                                              => [4] Url Modules <=
                                              
 URL Module :
@@ -108,6 +109,7 @@ url.parse():
 => method, and it will return a URL object with each part of the address as properties
 
 ================================================================================
+
                                              => [5] NPM <=
 
 NPM :
@@ -118,16 +120,19 @@ Package :
    Modules are JavaScript libraries you can include in your project.
 
 ================================================================================
+
                                              => [6] UPlOAD FILES <=
  Formidable Module :
 =>  There is a very good module for working with file uploads, called "Formidable".                                            
 
 ================================================================================
+
                                              => [7] Send an Email <=
 Nodemailer Module:
 => The Nodemailer module makes it easy to send emails from your computer.
 
 ================================================================================
+
                                              => [8] Express Framework <=
 Express :
 => Express is a minimal and flexible Node.js web application framework that provides a robust set of features to develop web and mobile applications. It facilitates the rapid development of Node based Web applications. Following are some of the core features of Express framework −
@@ -144,12 +149,16 @@ app.get('/', function (req, res) {
 })
 
 Request Object : 
+
 => The request object represents the HTTP request and has properties for the request query string, parameters, body, HTTP headers, and so on.
 Response Object :
+
 => The response object represents the HTTP response that an Express app sends when it gets an HTTP request.
 
 ================================================================================
+
                                              => [9] Routing <=
+
 We have seen a basic application which serves HTTP request for the homepage. 
 Routing refers to determining how an application responds to a client request to a particular endpoint,
 which is a URI (or path) and a specific HTTP request method (GET, POST, and so on).
@@ -165,5 +174,8 @@ app.post('/', function (req, res) {
    // --
 })
 
+
 ================================================================================
+
+
                                              => [10]Path Module <=
