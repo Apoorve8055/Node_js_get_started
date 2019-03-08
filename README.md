@@ -227,7 +227,7 @@ app.get('/things/:name/:id', function(req, res) {
    res.send('id: ' + req.params.id + ' and name: ' + req.params.name);
 });
 app.listen(3000);
-To test the above code, go to http://localhost:3000/things/tutorialspoint/12345.
+To test the above code, go to http://localhost:3000
 
 URL Building 2
 You can use the req.params object to access all the parameters you pass in the url. Note that the above 2 are different paths. They will never overlap. Also if you want to execute code when you get '/things' then you need to define it separately.
@@ -270,4 +270,62 @@ Middleware :
       res.render('first_view');
    });
    
+================================================================================
+
+                                             => [15] Post data <=
+   Forms are an integral part of the web. Almost every website we visit offers us forms that submit 
+   or fetch some information for us. To get started with forms, we will first install the body-parser(for parsing JSON and url-encoded data) and multer(for parsing multipart/form data) middleware.
    
+   To install the body-parser and multer, go to your terminal and use −
+   
+   npm install --save body-parser multer
+   Replace your index.js file contents with the following code −
+   
+   var express = require('express');
+   var bodyParser = require('body-parser');
+   var multer = require('multer');
+   var upload = multer();
+   var app = express();
+   
+   app.get('/', function(req, res){
+      res.render('form');
+   });
+   
+   app.set('view engine', 'pug');
+   app.set('views', './views');
+   
+   // for parsing application/json
+   app.use(bodyParser.json()); 
+   
+   // for parsing application/xwww-
+   app.use(bodyParser.urlencoded({ extended: true })); 
+   //form-urlencoded
+   
+   // for parsing multipart/form-data
+   app.use(upload.array()); 
+   app.use(express.static('public'));
+   
+   app.post('/', function(req, res){
+      console.log(req.body);
+      res.send("recieved your request!");
+   });
+   app.listen(3000);
+   After importing the body parser and multer, we will use the body-parser for parsing json and x-www-form-urlencoded header requests, while we will use multer for parsing multipart/form-data.
+   
+   Let us create an html form to test this out. Create a new view called form.pug with the following code −
+   
+   html
+   html
+      head
+         title Form Tester
+      body
+         form(action = "/", method = "POST")
+            div
+               label(for = "say") Say:
+               input(name = "say" value = "Hi")
+            br
+            div
+               label(for = "to") To:
+               input(name = "to" value = "Express forms")
+            br
+            button(type = "submit") Send my greetings
