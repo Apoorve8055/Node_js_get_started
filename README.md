@@ -197,4 +197,33 @@ Middleware :
    request-response cycle. These functions are used to modify req and res objects for tasks 
    like parsing request bodies, adding response headers, etc. 
    
+================================================================================
+
+                                             => [13] Templating <=
+   
+   Pug is a templating engine for Express. Templating engines are used to remove the cluttering of our server code with HTML, concatenating strings wildly to existing HTML templates. Pug is a very powerful templating engine which has a variety of features including filters, includes, inheritance, interpolation, etc. There is a lot of ground to cover on this.
+   
+   To use Pug with Express, we need to install it,
+   
+   npm install --save pug
+   
+   
+   Now that Pug is installed, set it as the templating engine for your app. You don't need to 'require' it. Add the following code to your index.js file.
+   
+   app.set('view engine', 'pug');
+   app.set('views','./views');
+   Now create a new directory called views. Inside that create a file called first_view.pug, and enter the following data in it.
+   
+   doctype html
+   html
+      head
+         title = "Hello Pug"
+      body
+         p.greetings#people Hello World!
+   To run this page, add the following route to your app −
+   
+   app.get('/first_template', function(req, res){
+      res.render('first_view');
+   });
+   
    
