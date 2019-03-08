@@ -183,10 +183,54 @@ app.post('/', function (req, res) {
 
                                              => [11]Serve Static Method <=
 
+Serve Static Method: 
+
+Static files are files that clients download as they are from the server. Create a new directory, public. Express, by default does not allow you to serve static files. You need to enable it using the following built-in middleware.
+
+app.use(express.static('public'));
+Note − Express looks up the files relative to the static directory, so the name of the static directory is not part of the URL.
+
+Note that the root route is now set to your public dir, so all static files you load will be considering public as root. To test that this is working fine, add any image file in your new public dir and change its name to "testimage.jpg". In your views, create a new view and include this file like −
+
+html
+   head
+   body
+      h3 Testing static file serving:
+      img(src = "/testimage.jpg", alt = "Testing Image
+      
+      
 ================================================================================
 
                                              => [12]url Binding <=
 
+
+We can now define routes, but those are static or fixed. To use the dynamic routes, we SHOULD provide different types of routes. Using dynamic routes allows us to pass parameters and process based on them.
+
+Here is an example of a dynamic route −
+
+var express = require('express');
+var app = express();
+
+app.get('/:id', function(req, res){
+   res.send('The id you specified is ' + req.params.id);
+});
+app.listen(3000);
+To test this go to http://localhost:3000/123. The following response will be displayed.
+
+URL Building 1
+You can replace '123' in the URL with anything else and the change will reflect in the response. A more complex example of the above is −
+
+var express = require('express');
+var app = express();
+
+app.get('/things/:name/:id', function(req, res) {
+   res.send('id: ' + req.params.id + ' and name: ' + req.params.name);
+});
+app.listen(3000);
+To test the above code, go to http://localhost:3000/things/tutorialspoint/12345.
+
+URL Building 2
+You can use the req.params object to access all the parameters you pass in the url. Note that the above 2 are different paths. They will never overlap. Also if you want to execute code when you get '/things' then you need to define it separately.
 ================================================================================
 
                                              => [13] Middleware <=
