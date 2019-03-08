@@ -23,6 +23,8 @@ app.use(upload.array());
 
 app.post('/', function(req, res){
     console.log(req.body);
-    res.send("recieved your request!");
+    var fname = req.body.fn;
+    var lname = req.body.ln;
+    res.send('Fisrt NAme :'+fname+'Last Name : '+lname);
 });
 app.listen(8080);
