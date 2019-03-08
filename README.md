@@ -177,5 +177,24 @@ app.post('/', function (req, res) {
 
 ================================================================================
 
-
                                              => [10]Path Module <=
+
+================================================================================
+
+                                             => [11]Serve Static Method <=
+
+================================================================================
+
+                                             => [12]url Binding <=
+
+================================================================================
+
+                                             => [13] Middleware <=
+
+Middleware :
+=> Middleware functions are functions that have access to the request object (req), 
+   the response object (res), and the next middleware function in the application’s 
+   request-response cycle. These functions are used to modify req and res objects for tasks 
+   like parsing request bodies, adding response headers, etc. 
+   
+   
