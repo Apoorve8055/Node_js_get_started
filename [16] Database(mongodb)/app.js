@@ -9,7 +9,9 @@ mongoose.connect(url);
 var db = mongoose.connection;
 
 db.on('error',console.error.bind(console,"connection error"));
-
+/*db.on('error',function(){
+   console.log('DB  Connection Not Bridge !     ');
+}); */
 db.on('open',function(){
    console.log('DB Connection Successful!');
 });
@@ -17,12 +19,12 @@ db.on('open',function(){
 
 mongoose.model('tut',{topic: String });
 
+console.log( mongoose.model('tut').find());
 app.get('/',function(req,res){
 
    mongoose.model('tut').find({'name':'Apoorve'},{_id:0},function(err,tut){
       res.send("<pre>"+tut+"<pre>");
    });
-
 });
 
 app.listen(8080,function(){
