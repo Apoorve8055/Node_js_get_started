@@ -1,0 +1,38 @@
+<%- include('header'); -%>
+<div style="height:300px;padding-top:20px;">
+
+    <div class="row">
+        <div class="col-md-12" align="center"><h2>Login Here</h2></div>
+    </div>
+
+    <form  action="/loginAuth" method="POST">
+        <div class="row">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><input class="form-control" type="text" name="user" placeholder="Enter The User Name" /></div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><input class="form-control" type="text" name="pass" placeholder="Enter The Pass" /></div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4"><input class="btn btn-primary" type="submit" name="btn" value="Login" style="width:100%;" /></div>
+            <div class="col-md-4"></div>
+        </div>
+        <div class="row" style="padding-top:10px;">
+            <div class="col-md-4"></div>
+            <div class="col-md-4">
+                <% if (auth == 1) { %>
+                <h5 style="color:green;" align="center">Login Successfully..</h5>
+                <% } if (auth == 2) { %>
+                <h5 style="color:red;" align="center">Login Failed..</h5>
+                <% } %>
+            </div>
+            <div class="col-md-4"></div>
+        </div>
+    </form>
+
+</div>
+<%- include('footer'); -%>
