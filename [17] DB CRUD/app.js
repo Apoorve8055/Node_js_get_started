@@ -16,19 +16,43 @@ db.on('error',function() {
 //Insert record
 var addRecord = new Mymodel(
 	{
-		_id: '1234',
-		name: 'Apoorve',
+		_id: '123457',
+		name: 'Apoorve Verma',
 		email: 'Apoorve@verma',
-		courseCount: 23
+		courseCount: 24
 	}
 );
 
-addRecord.save(function(err){
-	if(err) throw err;
-	Mymodel.find({},function(err,data){
+app.get('/insert',function(req,res){
+	addRecord.save(function(err){
 		if(err) throw err;
-		console.log(data);
 	});
+});
+
+app.get('/read',function(req,res){
+	Mymodel.find({},(err,data)=>{
+		if(err) return res.status(500).send(err);
+		return res.status(200).send(data);
+	});
+});
+
+app.get('/update',function(req,res){
+	Mymodel.findByIdAndUpdate({"_id":"123457"},{$set: {
+			name: 'Avi',
+			email: 'avi@verma',
+			courseCount: 21
+	}},(err,data)=>{
+		if(err) return res.status(500).send(err);
+		return res.status(200).send(data);
+	});
+});
+
+
+app.get('/delete',function(req,res){
+	Mymodel.findByIdAndRemove({"_id":"123457"},function(err,data){
+		if(err) return res.status(500).send("Data not Deleted");
+		return res.status(200).send("Data Deleted Successfully :" + data);
+	})
 });
 
 app.listen(8080);
