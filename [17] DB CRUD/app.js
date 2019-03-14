@@ -32,7 +32,8 @@ app.get('/Create',function(req,res){
 app.get('/read',function(req,res){
 	Mymodel.find({},(err,data)=>{
 		if(err) return res.status(500).send(err);
-		return res.status(200).send(data);
+		return res.json(data);
+		//return res.status(200).send(data);
 	});
 });
 //update
