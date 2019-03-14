@@ -22,20 +22,20 @@ var addRecord = new Mymodel(
 		courseCount: 24
 	}
 );
-
-app.get('/insert',function(req,res){
+//create
+app.get('/Create',function(req,res){
 	addRecord.save(function(err){
 		if(err) throw err;
 	});
 });
-
+//read
 app.get('/read',function(req,res){
 	Mymodel.find({},(err,data)=>{
 		if(err) return res.status(500).send(err);
 		return res.status(200).send(data);
 	});
 });
-
+//update
 app.get('/update',function(req,res){
 	Mymodel.findByIdAndUpdate({"_id":"123457"},{$set: {
 			name: 'Avi',
@@ -46,13 +46,13 @@ app.get('/update',function(req,res){
 		return res.status(200).send(data);
 	});
 });
-
-
+//delete
 app.get('/delete',function(req,res){
 	Mymodel.findByIdAndRemove({"_id":"123457"},function(err,data){
 		if(err) return res.status(500).send("Data not Deleted");
 		return res.status(200).send("Data Deleted Successfully :" + data);
 	})
 });
+
 
 app.listen(8080);
