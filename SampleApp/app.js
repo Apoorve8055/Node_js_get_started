@@ -2,6 +2,8 @@ var express = require('express');
 var app = express();
 var session = require('express-session');
 var bodyParser = require('body-parser');
+var jsonQuery = require('json-query')
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
 
@@ -60,132 +62,71 @@ var json_data = `[
   {
     "name": "Hitesh",
     "email": "hitesh@hiteshchoudhary.com",
-    "courseCount": 4
+    "Course": "BCA",
+    "gender" : "Male"
   },
   {
     "name": "Mark",
     "email": "mark@example.com",
-    "courseCount": 2
+    "Course": "MCA",
+     "gender" : "Male"
+
   },
   {
     "name": "Tom",
     "email": "tom@example.com",
-    "courseCount": 5
+    "Course": "BBA",
+        "gender" : "Male"
+
   },
   {
     "name": "Jerry",
     "email": "jerry@example.com",
-    "courseCount": 3
+    "Course": "BTEACH",
+        "gender" : "Male"
+
   },
   {
     "name": "spider",
     "email": "spider@example.com",
-    "courseCount": 2
+    "Course": "BTEACH",
+        "gender" : "FeMale"
+
   },
   {
     "name": "super",
     "email": "super@example.com",
-    "courseCount": 3
+    "Course": "MCA",
+            "gender" : "FeMale"
+
   },
   {
     "name": "Jade",
     "email": "jade@example.com",
-    "courseCount": 2
+    "Course": "BCA",
+            "gender" : "FeMale"
+
   },
   {
     "name": "Theodore",
     "email": "theodore@example.com",
-    "courseCount": 2
+    "Course": "BBA",
+            "gender" : "FeMale"
+
   },
   {
     "name": "Kirk",
     "email": "kirk@example.com",
-    "courseCount": 9
+    "Course": "MCA",
+            "gender" : "FeMale"
+
   },
   {
     "name": "Fleming",
     "email": "fleming@example.com",
-    "courseCount": 12
-  },
-  {
-    "name": "Roberta",
-    "email": "roberta@example.com",
-    "courseCount": 5
-  },
-  {
-    "name": "Lawrence",
-    "email": "lawrence@example.com",
-    "courseCount": 8
-  },
-  {
-    "name": "Terry",
-    "email": "trry@example.com",
-    "courseCount": 13
-  },
-  {
-    "name": "Rhodes",
-    "email": "rhodes@example.com",
-    "courseCount": 14
-  },
-  {
-    "name": "Sullivan",
-    "email": "sullivan@example.com",
-    "courseCount": 17
-  },
-  {
-    "name": "Robert",
-    "email": "robert@example.com",
-    "courseCount": 13
-  },
-  {
-    "name": "Gordon",
-    "email": "gordon@example.com",
-    "courseCount": 18
-  },
-  {
-    "name": "Henry",
-    "email": "henry@example.com",
-    "courseCount": 2
-  },
-  {
-    "name": "May",
-    "email": "may@example.com",
-    "courseCount": 5
-  },
-  {
-    "name": "Clark",
-    "email": "clark@example.com",
-    "courseCount": 19
-  },
-  {
-    "name": "Katrina",
-    "email": "katrina@example.com",
-    "courseCount": 13
-  },
-  {
-    "name": "Mayers",
-    "email": "mayers@example.com",
-    "courseCount": 11
-  },
-  {
-    "name": "Tina",
-    "email": "tina@example.com",
-    "courseCount": 14
-  },
-  {
-    "name": "Mason",
-    "email": "mason@example.com",
-    "courseCount": 4
-  },
-  {
-    "name": "Alexis",
-    "email": "alexis@example.com",
-    "courseCount": 13
-  },
-  {
-    "name": "Ford",
-    "email": "ford@example.com",
-    "courseCount": 9
+    "Course": "BCA",
+            "gender" : "FeMale"
+
   }
 ]
 `;
@@ -203,6 +144,10 @@ app.get('/admin',function(req,res){
 });
 
 app.post('/Search',function(req,res){
-    res.send(req.body.sea);
+
+    var result = jsonQuery('[* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +'  ] ', {data: json_data}).value;
+    console.table(result);
+    res.render('admin',{data:result});
+
 });
 app.listen(8080);

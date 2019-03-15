@@ -8,23 +8,51 @@
         <div class="col-md-2 col-xs-2"></div>
         <div class="col-md-1 col-xs-1"></div>
         <div class="col-md-5 col-xs-5"></i><input type="text" class="form-control" name="sea" placeholder="Enter The Name" /></div>
-        <div class="col-md-2 col-xs-2"><input type="submit" class="btn btn-primary" /> </div>
+        <div class="col-md-2 col-xs-2"><input type="submit" class="btn btn-primary" name="btns" /> </div>
+        <div class="col-md-2 col-xs-2"></div>
+    </form>
+</div>
+    <br>
+    <div class="row">
+    <form action="/Search" method="POST">
+        <div class="col-md-2 col-xs-2"></div>
+        <div class="col-md-1 col-xs-1"></div>
+
+        <div class="col-md-3 col-xs-3"></i>
+            <select class="form-control" name="Course">
+                <option>Course</option>
+                <option value="BCA">BCA</option>
+                <option value="MCA">MCA</option>
+                <option value="BTEACH">BTEACH</option>
+                <option value="BBA">BBA</option>
+            </select>
+        </div>
+
+        <div class="col-md-2 col-xs-3"></i>
+            <select class="form-control" name="gender">
+                <option>Gender</option>
+                <option value="Male">Male</option>
+                <option value="FeMale">Female</option>
+            </select>
+        </div>
+        <div class="col-md-2 col-xs-2"><input type="submit" name="btnf" class="btn btn-primary" /> </div>
         <div class="col-md-2 col-xs-2"></div>
     </form>
 </div>
     <br>
     <div class="row" >
-        <div class="col-md-3 col-xs-3 " style="border:2px solid;Background-color:#8080804f;" align="center">id </div>
-        <div class="col-md-3 col-xs-3" style="border:2px solid;Background-color:#8080804f;" align="center">Name </div>
-        <div class="col-md-3 col-xs-3" style="border:2px solid;Background-color:#8080804f;" align="center">Email </div>
-        <div class="col-md-3 col-xs-3" style="border:2px solid;Background-color:#8080804f;" align="center">courseCount </div>
+        <div class="col-md-4 col-xs-4" style="border:2px solid;Background-color:#8080804f;" align="center">id </div>
+        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Name </div>
+        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Email </div>
+        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">courseCount </div>
+        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Gender </div>
     </div>
 
 <% for(var key in data ){ %>
     <div class="row" >
-        <div class="col-md-3 col-xs-3" style="border:1px solid" align="center"> <%= key %> </div>
+        <div class="col-md-4 col-xs-3" style="border:1px solid" align="center"> <%= key %> </div>
         <% for(var key1 in data[key]){  %>
-        <div class="col-md-3 col-xs-3"   style="border:1px solid" align="center">  <%= data[key][key1] %> </div>
+        <div class="col-md-2 col-xs-2"   style="border:1px solid" align="center">  <%= data[key][key1] %> </div>
         <% }%>
     </div>
     <% } %>
