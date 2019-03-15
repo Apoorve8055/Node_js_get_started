@@ -202,5 +202,7 @@ app.get('/admin',function(req,res){
    }
 });
 
-
+app.post('/Search',function(req,res){
+    res.send(req.body.sea);
+});
 app.listen(8080);
