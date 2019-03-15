@@ -41,7 +41,7 @@ app.post('/loginAuth',function(req,res){
 
     if(user == "Apoorve" && pass == "12345"){
         sessMgmt.auth = 1;
-       res.render('login',{auth : sessMgmt.auth});
+        res.redirect('/admin');
     }else{
         sessMgmt.auth = 2;
         res.render('login',{auth : sessMgmt.auth} );
@@ -58,4 +58,15 @@ app.get('/logout',function(req,res){
     });
 });
 
+
+app.get('/admin',function(req,res){
+    sessMgmt = req.session;
+
+    if(sessMgmt.auth == 1){
+       res.render('admin');
+   }else{
+       res.redirect('/login');
+   }
+
+});
 app.listen(8080);
