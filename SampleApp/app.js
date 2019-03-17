@@ -145,9 +145,25 @@ app.get('/admin',function(req,res){
 
 app.post('/Search',function(req,res){
 
-    var result = jsonQuery('[* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +'  ] ', {data: json_data}).value;
+
+if( !(req.body.gender == '0') &&  !(req.body.Course == '0'))
+{  
+
+  var result = jsonQuery(' [* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
+  console.table(result);
+
+} else if(!(req.body.gender == '0') ||  !(req.body.Course == '0')){
+
+    var result = jsonQuery(' [* gender = '+ req.body.gender+ ' |  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
     console.table(result);
+}
+
+
     res.render('admin',{data:result});
 
+/*    var result = jsonQuery('[] ', {data: json_data}).value;
+    console.table(result);
+    res.render('admin',{data:result});
+*/
 });
 app.listen(8080);
