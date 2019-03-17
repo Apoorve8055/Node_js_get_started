@@ -1,16 +1,16 @@
 <%- include('header') -%>
+
 <div style="padding-top:30px;height:300px;">
     <div class="row" align="center" style="border:1px solid">
         <h1> User Active : <b style="color:Green">Apoorve </b> <a href="/logout"> <b style="color:red;text-decoration: none; padding-left:10px;">Logout</b></a></h1>
     </div><br>
+
 <div class="row">
     <form action="/Search" method="POST">
         <div class="col-md-2 col-xs-2"></div>
         <div class="col-md-1 col-xs-1"></div>
         <div class="col-md-6 col-xs-6"></i><input type="text" class="form-control" name="sea" placeholder="Enter The Name" /></div>
-
         <div class="col-md-3 col-xs-3"></div>
-
 </div>
     <br>
     <div class="row">
@@ -39,23 +39,52 @@
     </form>
 </div>
     <br>
-    <div class="row" >
-        <div class="col-md-4 col-xs-4" style="border:2px solid;Background-color:#8080804f;" align="center">id </div>
-        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Name </div>
-        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Email </div>
-        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">courseCount </div>
-        <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Gender </div>
-    </div>
 
-<% for(var key in data ){ %>
-    <div class="row" >
-        <div class="col-md-4 col-xs-4" style="border:1px solid" align="center"> <%= key %> </div>
-        <% for(var key1 in data[key]){  %>
-        <div class="col-md-2 col-xs-2"   style="border:1px solid" align="center">  <%= data[key][key1] %> </div>
+
+
+    <table class="tablesorter" >
+        <thead  >
+        <tr class="row" >
+            <th class="col-md-4 col-xs-4" style="border:2px solid;Background-color:rgba(24, 189, 159, 0.35);" ><div align="center">id</div></th>
+            <th class="col-md-2 col-xs-2" style="border:2px solid;Background-color:rgba(24, 189, 159, 0.35);" ><div align="center">Name</div></th>
+            <th class="col-md-2 col-xs-2" style="border:2px solid;Background-color:rgba(24, 189, 159, 0.35);" ><div align="center">Email</div></th>
+            <th class="col-md-2 col-xs-2" style="border:2px solid;Background-color:rgba(24, 189, 159, 0.35);" ><div align="center">course</div></th>
+            <th class="col-md-2 col-xs-2" style="border:2px solid;Background-color:rgba(24, 189, 159, 0.35);" ><div align="center">Gender</div></th>
+        </tr>
+        </thead>
+        <tbody>
+
+        <% for(var key in data ){ %>
+
+        <tr class="row" >
+            <td class="col-md-4 col-xs-4" style="border:2px solid;Background-color:#8080804f;" align="center"><%= key %></td>
+            <% for(var key1 in data[key]){  %>
+            <td class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center"> <%= data[key][key1] %> </td>
+            <% } %>
+        </tr>
         <% }%>
-    </div>
-    <% } %>
+        </tbody>
+    </table>
+
+
+
+    <hr>
+
+
+
+
+
+    <!--  <div class="row" >
+          <div class="col-md-4 col-xs-4" style="border:2px solid;Background-color:#8080804f;" align="center">id </div>
+          <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Name </div>
+          <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Email </div>
+          <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">courseCount </div>
+          <div class="col-md-2 col-xs-2" style="border:2px solid;Background-color:#8080804f;" align="center">Gender </div>
+      </div>
+
+           -->
 </div>
 
-
+<br >
+<div style="padding-top:150px;"></div>
 <%- include('footer') -%>

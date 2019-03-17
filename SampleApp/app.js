@@ -4,6 +4,9 @@ var session = require('express-session');
 var bodyParser = require('body-parser');
 var jsonQuery = require('json-query')
 
+
+app.use(express.static('views'));
+
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended : true}));
 
@@ -159,31 +162,28 @@ app.get('/admin',function(req,res){
 app.post('/Search',function(req,res){
 
 
-if((req.body.sea)  && ((req.body.gender == '0') && (req.body.Course == '0')))
-{
-    var result = jsonQuery(' [* name = '+ req.body.sea+ ' | email = '+ req.body.sea+ '  ]', {data: json_data}).value;
-    console.table("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-    console.table(result);
-    res.render('admin',{data:result});
-    console.table("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-}
-else if( (!(req.body.gender == '0') &&  !(req.body.Course == '0') && (req.body.sea) )  )
-{
-    console.table("test");
-    var result = jsonQuery(' [* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +' & name = '+ req.body.sea+ ' | email = '+ req.body.sea+ ' ]  ', {data: json_data}).value;
-    console.table(result);
+    if((req.body.sea)  && ((req.body.gender == '0') && (req.body.Course == '0')))
+    {
+        var result = jsonQuery(' [* name = '+ req.body.sea+ ' | email = '+ req.body.sea+ '  ]', {data: json_data}).value;
+        console.table(result);
+    }
+    else if( (!(req.body.gender == '0') &&  !(req.body.Course == '0') && (req.body.sea) )  )
+    {
+        console.table("test");
+        var result = jsonQuery(' [* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +' & name = '+ req.body.sea+ ' | email = '+ req.body.sea+ ' ]  ', {data: json_data}).value;
+        console.table(result);
 
-}else if( !(req.body.gender == '0') &&  !(req.body.Course == '0'))
-{  
+    }else if( !(req.body.gender == '0') &&  !(req.body.Course == '0'))
+    {
 
-  var result = jsonQuery(' [* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
-  console.table(result);
+      var result = jsonQuery(' [* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
+      console.table(result);
 
-} else if(!(req.body.gender == '0') ||  !(req.body.Course == '0')){
+    } else if(!(req.body.gender == '0') ||  !(req.body.Course == '0')){
 
-    var result = jsonQuery(' [* gender = '+ req.body.gender+ ' |  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
-    console.table(result);
-}
+        var result = jsonQuery(' [* gender = '+ req.body.gender+ ' |  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
+        console.table(result);
+    }
 
 
 
