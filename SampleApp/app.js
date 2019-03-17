@@ -75,7 +75,20 @@ var json_data = `[
   {
     "name": "Tom",
     "email": "tom@example.com",
+    "Course": "BCA",
+        "gender" : "Male"
+
+  },
+    {
+    "name": "Tom",
+    "email": "tom@example.com",
     "Course": "BBA",
+        "gender" : "Male"
+
+  },  {
+    "name": "Tom",
+    "email": "tom@example.com",
+    "Course": "MCA",
         "gender" : "Male"
 
   },
@@ -146,7 +159,21 @@ app.get('/admin',function(req,res){
 app.post('/Search',function(req,res){
 
 
-if( !(req.body.gender == '0') &&  !(req.body.Course == '0'))
+if((req.body.sea)  && ((req.body.gender == '0') && (req.body.Course == '0')))
+{
+    var result = jsonQuery(' [* name = '+ req.body.sea+ ' | email = '+ req.body.sea+ '  ]', {data: json_data}).value;
+    console.table("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+    console.table(result);
+    res.render('admin',{data:result});
+    console.table("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+}
+else if( (!(req.body.gender == '0') &&  !(req.body.Course == '0') && (req.body.sea) )  )
+{
+    console.table("test");
+    var result = jsonQuery(' [* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +' & name = '+ req.body.sea+ ' | email = '+ req.body.sea+ ' ]  ', {data: json_data}).value;
+    console.table(result);
+
+}else if( !(req.body.gender == '0') &&  !(req.body.Course == '0'))
 {  
 
   var result = jsonQuery(' [* gender = '+ req.body.gender+ ' &  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
@@ -157,6 +184,7 @@ if( !(req.body.gender == '0') &&  !(req.body.Course == '0'))
     var result = jsonQuery(' [* gender = '+ req.body.gender+ ' |  Course = '+ req.body.Course +'  ]  ', {data: json_data}).value;
     console.table(result);
 }
+
 
 
     res.render('admin',{data:result});
