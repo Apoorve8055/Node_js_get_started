@@ -34,7 +34,16 @@ app.get('/About',function(req,res){
 });
 
 app.get('/Login',function(req,res){
-    res.render('login',{auth:0});
+
+    sessMgmt = req.session;
+
+    if(sessMgmt.auth == 1){
+        console.table(json_data);
+        res.render('admin',{data:json_data});
+    }else{
+        res.render('login',{auth:0});
+
+    }
 });
 
 app.post('/loginAuth',function(req,res){
