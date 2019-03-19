@@ -141,7 +141,7 @@ app.post('/loginAuth',function(req,res){
     var user = req.body.user;
     var pass = req.body.pass;
 
-    if(user == "Apoorve" && pass == "12345"){
+    if(jsonQuery(' [* email = '+ req.body.user+ ' & pass = '+req.body.pass +'  ]', {data: json_data}).value){
         sessMgmt.auth = 1;
         res.redirect('/admin');
     }else{
