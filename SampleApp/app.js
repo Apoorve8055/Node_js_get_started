@@ -15,16 +15,72 @@ app.use(session({secret:"this is encription key"}));
 app.set('view engine','ejs');
 
 var sessMgmt ;
+var data = {
+    fname:"Apoorve",
+    lname:"Verma"
+}
+
+app.get('/',function(req,res){
 
 
+    sessMgmt = req.session;
+
+    if(sessMgmt.auth == 1){
+        res.render('index',{fname:sessMgmt.name});
+    }else{
+        res.render('index',{fname:"UserName"});
+
+    }
+
+
+});
+app.get('/About',function(req,res){
+    res.render('About',{
+        fname: data.fname,
+        lname: data.lname
+    });
+});
+
+app.get('/Login',function(req,res){
+
+    sessMgmt = req.session;
+
+    if(sessMgmt.auth == 1){
+        console.table(json_data);
+        res.render('admin',{data:json_data});
+    }else{
+        res.render('login',{auth:0});
+
+    }
+});
+
+app.post('/loginAuth',function(req,res){
+    sessMgmt = req.session;
+
+    var user = req.body.user;
+    var pass = req.body.pass;
+
+    if(user == "Apoorve" && pass == "12345"){
+        sessMgmt.auth = 1;
+        sessMgmt.name = "Apoorve";
+        res.redirect('/admin');
+    }else{
+        sessMgmt.auth = 2;
+        res.render('login',{auth : sessMgmt.auth} );
+    }
+});
+
+app.get('/logout',function(req,res){
+    req.session.destroy(function(err) {
+        if(err) {
+            console.log(err);
+        } else {
+            res.redirect('/login');
+        }
+    });
+});
 var json_data = `[
   {
-    "name": "Apoorve",
-    "email": "vapoorve@gmail.com",
-    "Course": "BCA",
-    "gender" : "Male"
-    "pass" : "12345"
-  },{
     "name": "Hitesh",
     "email": "hitesh@hiteshchoudhary.com",
     "Course": "BCA",
@@ -108,58 +164,6 @@ var json_data = `[
   }
 ]
 `;
-
-app.get('/',function(req,res){
-    res.render('index',{
-        fname: data.fname,
-        lname: data.lname
-    });
-});
-app.get('/About',function(req,res){
-    res.render('About',{
-        fname: data.fname,
-        lname: data.lname
-    });
-});
-
-app.get('/Login',function(req,res){
-
-    sessMgmt = req.session;
-
-    if(sessMgmt.auth == 1){
-        console.table(json_data);
-        res.render('admin',{data:json_data});
-    }else{
-        res.render('login',{auth:0});
-
-    }
-});
-
-app.post('/loginAuth',function(req,res){
-    sessMgmt = req.session;
-
-    var user = req.body.user;
-    var pass = req.body.pass;
-
-    if(jsonQuery(' [* email = '+ req.body.user+ ' & pass = '+req.body.pass +'  ]', {data: json_data}).value){
-        sessMgmt.auth = 1;
-        res.redirect('/admin');
-    }else{
-        sessMgmt.auth = 2;
-        res.render('login',{auth : sessMgmt.auth} );
-    }
-});
-
-app.get('/logout',function(req,res){
-    req.session.destroy(function(err) {
-        if(err) {
-            console.log(err);
-        } else {
-            res.redirect('/login');
-        }
-    });
-});
-
 
 json_data = JSON.parse(json_data);
 app.get('/admin',function(req,res){
