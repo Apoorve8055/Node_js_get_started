@@ -16,9 +16,11 @@ app.set('view engine','ejs');
 
 var sessMgmt ;
 var data = {
+
     fname:"Apoorve",
     lname:"Verma"
 }
+
 
 app.get('/',function(req,res){
 
