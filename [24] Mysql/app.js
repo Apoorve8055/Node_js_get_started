@@ -24,6 +24,16 @@ con.query("CREATE TABLE users (id INT AUTO_INCREMENT PRIMARY KEY, name VARCHAR(2
     console.log("Table Created :"+result);
 });
 
+con.query("insert into users set name = 'Apoorve' , pass = '12345' ",function(err,result){
+        if(err) throw err;
+        console.log("Table Created :"+result);
+});
+
+    con.query("SELECT * FROM USERS", function (err, result, fields) {
+        if (err) throw err;
+        console.table(result);
+        console.log(result);
+    });
 */
 
 });
